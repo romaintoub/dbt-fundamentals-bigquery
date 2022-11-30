@@ -2,8 +2,29 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    description: Jaffle shop schema available in Bq.
     database: dbt-tutorial
     schema: jaffle_shop
+    loader: Public
+    loaded_at_field: _etl_loaded_at
+    # meta fields are rendered in auto-generated doc
+    meta:
+      contains_pii: false
+      owner: "@romain"
+    
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
     tables:
       - name: customers
       - name: orders
+        description: Orders from Jaffle shop source.
+        loaded_at_field: _etl_loaded_at # override source defaults
+        freshness: # make this a little more strict
+          warn_after: {count: 6, period: hour}
+          error_after: {count: 18, period: hour}
+          # Apply a where clause in the freshness query
+          filter: TIMESTAMP_DIFF( CURRENT_TIMESTAMP(), CAST( _etl_loaded_at AS timestamp), DAY) < 1
+
