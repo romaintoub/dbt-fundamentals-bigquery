@@ -28,3 +28,9 @@ sources:
           # Apply a where clause in the freshness query
           filter: TIMESTAMP_DIFF( CURRENT_TIMESTAMP(), CAST( _etl_loaded_at AS timestamp), DAY) < 1
 
+        columns:
+          - name: id
+            description: The identifier of the order
+            tests:
+              - not_null
+
