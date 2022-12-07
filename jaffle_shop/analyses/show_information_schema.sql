@@ -1,6 +1,9 @@
 {% set database = target.database %}
 {% set schema = target.schema %}
+{% set dataset = target.dataset %} # variable available for bq only
+{% set project = target.project %} # variable available for bq only
 
+{{ project }}
 select
     table_type,
     table_schema,
