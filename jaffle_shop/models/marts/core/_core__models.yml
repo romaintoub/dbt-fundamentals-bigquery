@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Details about the customers.
+    columns:
+      - name: customer_id
+        description: Primary Key. The unique identifier of the customer.
+        tests:
+          - not_null
+          - unique
+
+  - name: fct_orders
+    description: Event details about all the orders.
+    columns:
+      - name: order_id
+        description: Primary Key. The unique identifier of the order.
+        tests:
+          - not_null
+          - unique
+
+  - name: int_orders__pivoted
+    description: Intermediate model to detail the payment methods.
+    columns:
+      - name: order_id
+        description: Primary Key. The unique identifier of the order.
+        tests:
+          - not_null
+          - unique
+

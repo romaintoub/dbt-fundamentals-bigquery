@@ -1,0 +1,11 @@
+version: 2
+
+models:
+    - name: all_dates
+      description: Date spine from 2019-01-01 to the current date.
+      columns:
+        - name: date_day
+          description: The date in the 'YYYY-MM-DDTHH:MM:SS' format.
+          tests:
+            - not_null
+            - unique
