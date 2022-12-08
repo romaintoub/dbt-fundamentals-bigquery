@@ -12,6 +12,15 @@ models:
 
   - name: fct_orders
     description: Event details about all the orders.
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "amount >= 5"
+          config:
+                severity: error
+                error_if: ">20"
+                warn_if: ">10"
+                store_failures: true
+                limit: 100
     columns:
       - name: order_id
         description: Primary Key. The unique identifier of the order.
@@ -23,6 +32,15 @@ models:
         tests:
           - average_dollars_spent_greater_than_one:
               group_by_column: "customer_id"
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 5
+              row_condition: "order_id is not null"
+              strictly: true
+              config:
+                severity: error
+                error_if: ">20"
+                warn_if: ">10"
+
 
   - name: int_orders__pivoted
     description: Intermediate model to detail the payment methods.
