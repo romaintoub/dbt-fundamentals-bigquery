@@ -29,4 +29,3 @@ sources:
                   config:
                     limit: 10
                     store_failures: true
-                    schema: abc_test
