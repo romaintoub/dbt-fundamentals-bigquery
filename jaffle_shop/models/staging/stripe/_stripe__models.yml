@@ -1,0 +1,11 @@
+version: 2
+
+models:
+    - name: stg_payments
+      description: Contains details about the payments.
+      columns:
+        - name: payment_id
+          description: Primary Key. The unique identifier of the payment.
+          tests:
+            - not_null
+            - unique
