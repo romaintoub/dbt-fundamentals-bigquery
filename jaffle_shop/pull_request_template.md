@@ -26,9 +26,8 @@ Include any notes about things that need to happen before this PR is merged, e.g
 - Ensure the necessary PRs are merged.
 
 ## Screenshots
-Include a screenshot of the relevant section of the updated DAG. You can access
-
-your version of the DAG by running `dbt docs generate && dbt docs serve`.
+Include a screenshot of the relevant section of the updated DAG. You can access your
+version of the DAG by running `dbt docs generate && dbt docs serve`.
 
 ## Validation of models
 Include any output that confirms that the models do what is expected. This might
