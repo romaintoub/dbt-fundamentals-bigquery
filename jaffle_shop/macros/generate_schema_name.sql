@@ -5,10 +5,10 @@
 
         {{ default_schema }}
 
-    -- remove default schema name in prod
-    {% elif target.name in ['prod'] %}
+    {%- elif target.name in ['prod'] -%}
 
         {{ custom_schema_name | trim }}
+
     {%- else -%}
 
         {{ default_schema }}_{{ custom_schema_name | trim }}
